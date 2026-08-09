@@ -17,7 +17,7 @@ import CandidateDashboard from './components/CandidateDashboard';
 
 import { 
   Bot, LayoutDashboard, Users, MessageSquare, BarChart3, Settings, 
-  Search, Bell, Sparkles, Zap, ChevronRight, X, Activity, CheckCircle2, UserCheck, Shield
+  Search, Bell, Sparkles, Zap, ChevronRight, X, Activity, CheckCircle2, UserCheck, Shield, Menu
 } from 'lucide-react';
 
 export default function App() {
@@ -53,6 +53,9 @@ export default function App() {
   // Activity Feed
   const [activityLogs, setActivityLogs] = useState([]);
   const [showActivityDrawer, setShowActivityDrawer] = useState(false);
+
+  // Mobile Navigation Drawer State
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     loadCandidatesList();
@@ -223,6 +226,16 @@ export default function App() {
       {/* Top Header */}
       <header className="saas-header">
         <div className="logo-brand">
+          {userRole === 'admin' && (
+            <button 
+              className="mobile-menu-toggle-btn" 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              title="Toggle Navigation Menu"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X size={20} color="#fff" /> : <Menu size={20} color="#fff" />}
+            </button>
+          )}
           <div className="logo-icon-glow">
             <Bot size={26} color="#818cf8" />
           </div>
@@ -266,6 +279,7 @@ export default function App() {
                         setActiveTab('candidates');
                         setView('selector');
                         setShowSearchDropdown(false);
+                        setMobileMenuOpen(false);
                       }}
                     >
                       <span style={{ color: '#fff', fontWeight: 600 }}>{c.member.name}</span>
@@ -285,6 +299,7 @@ export default function App() {
                       onClick={() => {
                         setActiveTab('interviews');
                         setShowSearchDropdown(false);
+                        setMobileMenuOpen(false);
                       }}
                     >
                       <span style={{ color: '#fff', fontWeight: 600 }}>{s.candidateName}</span>
@@ -346,6 +361,14 @@ export default function App() {
         </div>
       )}
 
+      {/* Mobile Sidebar Overlay Backdrop */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-sidebar-backdrop show" 
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
       {/* RENDER CANDIDATE PORTAL MODE */}
       {userRole === 'candidate' ? (
         <main className="saas-main-content" style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -388,7 +411,12 @@ export default function App() {
         /* RENDER ADMIN PORTAL MODE */
         <div className="saas-body-wrapper">
           {/* Left Sidebar */}
-          <aside className="saas-sidebar">
+          <aside className={`saas-sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+            <div className="mobile-sidebar-header">
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#a5b4fc', letterSpacing: '0.05em' }}>NAVIGATION MENU</span>
+              <button className="modal-close-btn" onClick={() => setMobileMenuOpen(false)}>✕</button>
+            </div>
+
             <div className="sidebar-nav-section">
               <div className="nav-group-label">ADMIN NAVIGATION</div>
 
@@ -397,6 +425,7 @@ export default function App() {
                 onClick={() => {
                   setActiveTab('dashboard');
                   if (view === 'chat' || view === 'feedback') setView('selector');
+                  setMobileMenuOpen(false);
                 }}
               >
                 <LayoutDashboard size={18} />
@@ -408,6 +437,7 @@ export default function App() {
                 onClick={() => {
                   setActiveTab('candidates');
                   setView('selector');
+                  setMobileMenuOpen(false);
                 }}
               >
                 <Users size={18} />
@@ -420,6 +450,7 @@ export default function App() {
                 onClick={() => {
                   setActiveTab('interviews');
                   if (messages.length > 0 && view !== 'chat') setView('chat');
+                  setMobileMenuOpen(false);
                 }}
               >
                 <MessageSquare size={18} />
@@ -432,6 +463,7 @@ export default function App() {
                 onClick={() => {
                   setActiveTab('analytics');
                   if (view === 'chat' || view === 'feedback') setView('selector');
+                  setMobileMenuOpen(false);
                 }}
               >
                 <BarChart3 size={18} />
@@ -443,6 +475,7 @@ export default function App() {
                 onClick={() => {
                   setActiveTab('settings');
                   if (view === 'chat' || view === 'feedback') setView('selector');
+                  setMobileMenuOpen(false);
                 }}
               >
                 <Settings size={18} />
