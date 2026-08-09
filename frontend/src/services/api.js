@@ -1,4 +1,4 @@
-const API_BASE = 'https://hacksphere-vicodathon.onrender.com/api';
+const API_BASE = 'https://hacksphere-vicodathon-project.onrender.com/api';
 
 export async function fetchCandidates() {
   const res = await fetch(`${API_BASE}/candidates`);
@@ -59,7 +59,7 @@ export async function fetchSessions() {
 }
 
 export async function fetchHealth() {
-  const res = await fetch(`https://hacksphere-vicodathon.onrender.com/health`);
+  const res = await fetch(`https://hacksphere-vicodathon-project.onrender.com/health`);
   if (!res.ok) return { status: 'offline' };
   return await res.json();
 }
