@@ -10,20 +10,20 @@ export default function FeedbackView({ candidate, feedback, onRestart }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <div style={{ display: 'inline-flex', padding: '0.6rem 1.2rem', borderRadius: '9999px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#34d399', fontWeight: 600, fontSize: '0.9rem', marginBottom: '1rem' }}>
+        <div style={{ display: 'inline-flex', padding: '0.6rem 1.2rem', borderRadius: '9999px', background: 'rgba(39, 131, 88, 0.12)', border: '1px solid rgba(39, 131, 88, 0.3)', color: '#278358', fontWeight: 600, fontSize: '0.9rem', marginBottom: '1rem' }}>
           <Award size={18} style={{ marginRight: '6px' }} /> Technical Interview Completed
         </div>
-        <h1 className="hero-title">Candidate Evaluation Report</h1>
-        <p className="hero-subtitle">
+        <h1 className="hero-heading">Candidate Evaluation Report</h1>
+        <p className="hero-subtext" style={{ margin: '0 auto' }}>
           Performance assessment for <strong>{member.name}</strong> ({member.jobRole}, {member.yearsExperience} yrs exp)
         </p>
       </div>
 
-      <div className="glass-card summary-card" style={{ marginBottom: '1.5rem' }}>
-        <div className="feedback-section-title" style={{ color: '#818cf8' }}>
+      <div className="glass-card" style={{ marginBottom: '1.5rem' }}>
+        <div className="feedback-section-title" style={{ color: 'var(--primary)' }}>
           Executive Summary
         </div>
-        <p style={{ fontSize: '1.05rem', color: '#f1f5f9', lineHeight: '1.7' }}>
+        <p style={{ fontSize: '1.05rem', color: 'var(--text-main)', lineHeight: '1.7' }}>
           {feedback?.summary}
         </p>
       </div>
@@ -31,7 +31,7 @@ export default function FeedbackView({ candidate, feedback, onRestart }) {
       <div className="feedback-grid">
         {/* Strengths */}
         <div className="glass-card">
-          <div className="feedback-section-title" style={{ color: '#34d399' }}>
+          <div className="feedback-section-title" style={{ color: 'var(--accent-emerald)' }}>
             <CheckCircle2 size={20} /> Observed Strengths
           </div>
           <ul className="feedback-list strengths">
@@ -43,7 +43,7 @@ export default function FeedbackView({ candidate, feedback, onRestart }) {
 
         {/* Technical Gaps */}
         <div className="glass-card">
-          <div className="feedback-section-title" style={{ color: '#fbbf24' }}>
+          <div className="feedback-section-title" style={{ color: 'var(--accent-amber)' }}>
             <AlertTriangle size={20} /> Areas Needing Improvement
           </div>
           <ul className="feedback-list gaps">
@@ -55,7 +55,7 @@ export default function FeedbackView({ candidate, feedback, onRestart }) {
 
         {/* Actionable Next Steps */}
         <div className="glass-card" style={{ gridColumn: '1 / -1' }}>
-          <div className="feedback-section-title" style={{ color: '#22d3ee' }}>
+          <div className="feedback-section-title" style={{ color: 'var(--accent-cyan)' }}>
             <ArrowRightCircle size={20} /> Recommended Curriculum Next Steps
           </div>
           <ul className="feedback-list next">

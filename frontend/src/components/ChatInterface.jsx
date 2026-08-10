@@ -144,7 +144,7 @@ export default function ChatInterface({
   return (
     <div className="glass-card chat-container">
       {/* Top Bar */}
-      <div className="chat-header" style={{ borderBottom: '1px solid var(--border-color)' }}>
+      <div className="chat-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <button
             onClick={onBackToCandidates}
@@ -156,10 +156,6 @@ export default function ChatInterface({
               padding: '0.4rem 0.85rem',
               fontSize: '0.85rem',
               fontWeight: 500,
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid var(--border-color)',
-              borderRadius: '8px',
-              color: '#e2e8f0',
               cursor: 'pointer'
             }}
             title="Back to Candidate Selection"
@@ -167,7 +163,7 @@ export default function ChatInterface({
             <ArrowLeft size={16} /> Back
           </button>
           <div>
-            <h3 style={{ fontSize: '1.1rem', color: '#fff' }}>Interviewing {member.name}</h3>
+            <h3 style={{ fontSize: '1.1rem', color: 'var(--text-main)' }}>Interviewing {member.name}</h3>
             <p style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)' }}>{member.jobRole} ({member.yearsExperience} yrs exp)</p>
           </div>
         </div>
@@ -202,7 +198,7 @@ export default function ChatInterface({
             </div>
             <div className="bubble">
               <div className="typing-indicator">
-                <span style={{ fontSize: '0.85rem', marginRight: '0.5rem', color: '#a5b4fc' }}>Interviewer evaluating response</span>
+                <span style={{ fontSize: '0.85rem', marginRight: '0.5rem', color: 'var(--primary)' }}>Interviewer evaluating response</span>
                 <div className="dot"></div>
                 <div className="dot"></div>
                 <div className="dot"></div>
@@ -215,14 +211,14 @@ export default function ChatInterface({
 
       {/* Voice Error / Status Banner */}
       {voiceError && (
-        <div style={{ padding: '0.5rem 1rem', background: 'rgba(239, 68, 68, 0.15)', borderTop: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ padding: '0.5rem 1rem', background: 'rgba(239, 68, 68, 0.15)', borderTop: '1px solid rgba(239, 68, 68, 0.3)', color: '#dc2626', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span>{voiceError}</span>
-          <button onClick={() => setVoiceError(null)} style={{ background: 'none', border: 'none', color: '#fca5a5', cursor: 'pointer', fontWeight: 'bold' }}>✕</button>
+          <button onClick={() => setVoiceError(null)} style={{ background: 'none', border: 'none', color: '#dc2626', cursor: 'pointer', fontWeight: 'bold' }}>✕</button>
         </div>
       )}
 
       {/* Input Form */}
-      <form onSubmit={handleSubmit} className="chat-input-area" style={{ borderTop: '1px solid var(--border-color)' }}>
+      <form onSubmit={handleSubmit} className="chat-input-area">
         <button
           type="button"
           className={`btn ${isListening ? 'btn-danger' : 'btn-secondary'}`}
@@ -234,15 +230,15 @@ export default function ChatInterface({
             alignItems: 'center',
             gap: '0.4rem',
             padding: '0.65rem 1rem',
-            background: isListening ? '#dc2626' : 'rgba(255, 255, 255, 0.08)',
+            background: isListening ? '#dc2626' : '#ffffff',
             borderColor: isListening ? '#ef4444' : 'var(--border-color)',
-            color: '#fff',
+            color: isListening ? '#ffffff' : 'var(--text-main)',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             animation: isListening ? 'pulse 1.5s infinite' : 'none'
           }}
         >
-          {isListening ? <MicOff size={16} color="#ffffff" /> : <Mic size={16} color={isVoiceSupported ? '#a5b4fc' : '#64748b'} />}
+          {isListening ? <MicOff size={16} color="#ffffff" /> : <Mic size={16} color={isVoiceSupported ? 'var(--primary)' : 'var(--text-subtle)'} />}
           <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>
             {isListening ? 'Listening...' : 'Speak Answer'}
           </span>

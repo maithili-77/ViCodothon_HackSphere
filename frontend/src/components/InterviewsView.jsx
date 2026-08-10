@@ -32,10 +32,10 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
             <ArrowLeft size={16} /> Back to Sessions List
           </button>
           <div>
-            <h2 style={{ color: '#fff', fontSize: '1.4rem' }}>
+            <h2 style={{ color: 'var(--text-main)', fontSize: '1.4rem' }}>
               Interview Details: <span className="gradient-text">{selectedSession.candidateName}</span>
             </h2>
-            <p style={{ color: '#94a3b8', fontSize: '0.85rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
               {selectedSession.jobRole} • Session ID: <code>{selectedSession.sessionId}</code>
             </p>
           </div>
@@ -56,8 +56,8 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
 
         {/* Conversation Transcript */}
         <div className="glass-card" style={{ marginBottom: '1.5rem' }}>
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <MessageSquare size={18} color="#818cf8" /> Full Conversation Transcript
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <MessageSquare size={18} color="var(--primary)" /> Full Conversation Transcript
           </h3>
 
           <div className="transcript-feed" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -77,16 +77,16 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
         {/* Final Feedback Section if completed */}
         {feedback && (
           <div className="glass-card">
-            <div className="feedback-section-title" style={{ color: '#818cf8', fontSize: '1.1rem', marginBottom: '0.75rem' }}>
+            <div className="feedback-section-title" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginBottom: '0.75rem' }}>
               <Award size={20} /> Evaluation Report & Feedback
             </div>
-            <p style={{ color: '#f1f5f9', fontSize: '0.98rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+            <p style={{ color: 'var(--text-main)', fontSize: '0.98rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
               {feedback.summary}
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
               <div>
-                <h4 style={{ color: '#34d399', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                <h4 style={{ color: 'var(--accent-emerald)', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                   <CheckCircle2 size={16} /> Observed Strengths
                 </h4>
                 <ul className="feedback-list strengths">
@@ -97,7 +97,7 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
               </div>
 
               <div>
-                <h4 style={{ color: '#fbbf24', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                <h4 style={{ color: 'var(--accent-amber)', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                   <AlertTriangle size={16} /> Technical Gaps
                 </h4>
                 <ul className="feedback-list gaps">
@@ -109,7 +109,7 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
             </div>
 
             <div>
-              <h4 style={{ color: '#38bdf8', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <h4 style={{ color: 'var(--accent-cyan)', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                 <ArrowRightCircle size={16} /> Recommended Next Steps
               </h4>
               <ul className="feedback-list next">
@@ -172,9 +172,9 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
       {/* Sessions List */}
       {filteredSessions.length === 0 ? (
         <div className="glass-card empty-state-box" style={{ padding: '3rem', textAlign: 'center' }}>
-          <MessageSquare size={40} color="#64748b" style={{ marginBottom: '1rem' }} />
-          <h3 style={{ color: '#fff', marginBottom: '0.5rem' }}>No Interview Sessions Found</h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>No interview sessions match the selected filter criteria.</p>
+          <MessageSquare size={40} color="var(--text-subtle)" style={{ marginBottom: '1rem' }} />
+          <h3 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>No Interview Sessions Found</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>No interview sessions match the selected filter criteria.</p>
           <button className="btn btn-primary" onClick={onStartNewInterview} style={{ marginTop: '1rem' }}>
             Start New Interview
           </button>
@@ -185,16 +185,16 @@ export default function InterviewsView({ sessions, onStartNewInterview }) {
             <div key={sess.sessionId} className="glass-card session-card-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 1.5rem', gap: '1rem' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.3rem' }}>
-                  <h3 style={{ color: '#fff', fontSize: '1.1rem' }}>{sess.candidateName}</h3>
+                  <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>{sess.candidateName}</h3>
                   <span className={`status-pill ${sess.done ? 'passed' : 'failed'}`}>
                     {sess.done ? 'COMPLETED' : 'IN PROGRESS'}
                   </span>
                 </div>
-                <div style={{ color: '#a5b4fc', fontSize: '0.85rem', marginBottom: '0.5rem' }}>
+                <div style={{ color: 'var(--primary)', fontSize: '0.85rem', marginBottom: '0.5rem' }}>
                   {sess.jobRole} • Candidate ID: <code>{sess.candidateId}</code>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', color: '#94a3b8' }}>
+                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                   <span><HelpCircle size={13} style={{ display: 'inline', marginRight: '4px' }} /> {sess.questionCount} Questions</span>
                   <span><Calendar size={13} style={{ display: 'inline', marginRight: '4px' }} /> {sess.uniqueDaysCount} Curriculum Days</span>
                   <span><Clock size={13} style={{ display: 'inline', marginRight: '4px' }} /> {new Date(sess.createdAt * 1000).toLocaleTimeString()}</span>

@@ -29,29 +29,29 @@ export default function CandidateLogin({ onLoginSuccess, onSwitchToRegister, onS
       <div className="glass-card" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div className="logo-icon-glow" style={{ margin: '0 auto 1rem auto', width: '48px', height: '48px' }}>
-            <Bot size={28} color="#818cf8" />
+            <Bot size={28} color="#8b6b3e" />
           </div>
           <h2 className="hero-heading" style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>
             Candidate <span className="gradient-text">Portal Login</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.88rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
             Sign in to access your personal candidate dashboard and start your evaluation.
           </p>
         </div>
 
         {error && (
-          <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', borderRadius: '10px', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+          <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#dc2626', borderRadius: '10px', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <div>
-            <label style={{ fontSize: '0.85rem', color: '#a5b4fc', display: 'block', marginBottom: '0.4rem', fontWeight: 600 }}>
+            <label style={{ fontSize: '0.85rem', color: 'var(--primary)', display: 'block', marginBottom: '0.4rem', fontWeight: 600 }}>
               Email Address
             </label>
-            <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-              <Mail size={16} color="#94a3b8" />
+            <div className="search-input-wrapper">
+              <Mail size={16} color="var(--text-muted)" />
               <input 
                 type="email" 
                 className="search-input" 
@@ -64,11 +64,11 @@ export default function CandidateLogin({ onLoginSuccess, onSwitchToRegister, onS
           </div>
 
           <div>
-            <label style={{ fontSize: '0.85rem', color: '#a5b4fc', display: 'block', marginBottom: '0.4rem', fontWeight: 600 }}>
+            <label style={{ fontSize: '0.85rem', color: 'var(--primary)', display: 'block', marginBottom: '0.4rem', fontWeight: 600 }}>
               Password
             </label>
-            <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-              <Key size={16} color="#94a3b8" />
+            <div className="search-input-wrapper">
+              <Key size={16} color="var(--text-muted)" />
               <input 
                 type="password" 
                 className="search-input" 
@@ -93,7 +93,7 @@ export default function CandidateLogin({ onLoginSuccess, onSwitchToRegister, onS
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1.75rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border-color)', fontSize: '0.85rem' }}>
           <button 
             onClick={onSwitchToAdmin}
-            style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+            style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
           >
             <Shield size={14} /> Admin Portal View
           </button>

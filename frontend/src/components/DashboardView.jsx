@@ -47,7 +47,7 @@ export default function DashboardView({
       <div className="dashboard-hero-card">
         <div>
           <div className="hero-badge">
-            <Sparkles size={14} color="#38bdf8" /> AI Technical Evaluation System
+            <Sparkles size={14} color="var(--accent-cyan)" /> AI Technical Evaluation System
           </div>
           <h1 className="hero-heading" style={{ fontSize: '1.8rem', marginTop: '0.4rem' }}>
             Interview Agent <span className="gradient-text">Dashboard</span>
@@ -60,7 +60,7 @@ export default function DashboardView({
             <button className="btn btn-primary" onClick={onStartNewInterview} style={{ padding: '0.75rem 1.5rem' }}>
               <Play size={16} fill="currentColor" /> Start New Technical Interview
             </button>
-            <button className="btn btn-secondary" onClick={onAddNewCandidate} style={{ padding: '0.75rem 1.25rem', background: 'rgba(99, 102, 241, 0.2)', borderColor: '#818cf8', color: '#e0e7ff' }}>
+            <button className="btn btn-secondary" onClick={onAddNewCandidate} style={{ padding: '0.75rem 1.25rem' }}>
               <User size={16} /> + Add Candidate
             </button>
           </div>
@@ -135,16 +135,16 @@ export default function DashboardView({
         {/* Recent Interviews */}
         <div className="glass-card">
           <div className="section-header-row">
-            <h3 style={{ color: '#fff', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Activity size={18} color="#818cf8" /> Recent Interview Sessions
+            <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Activity size={18} color="var(--primary)" /> Recent Interview Sessions
             </h3>
             <span className="badge badge-primary">{sessions.length} Recorded</span>
           </div>
 
           {sessions.length === 0 ? (
             <div className="empty-state-box">
-              <MessageSquare size={32} color="#64748b" style={{ marginBottom: '0.75rem' }} />
-              <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>No interview sessions recorded yet.</p>
+              <MessageSquare size={32} color="var(--text-subtle)" style={{ marginBottom: '0.75rem' }} />
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>No interview sessions recorded yet.</p>
               <button className="btn btn-secondary" onClick={onStartNewInterview} style={{ marginTop: '0.75rem', fontSize: '0.82rem' }}>
                 Launch First Interview
               </button>
@@ -160,7 +160,7 @@ export default function DashboardView({
                         {sess.done ? 'COMPLETED' : 'IN PROGRESS'}
                       </span>
                     </div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
                       {sess.jobRole} • {sess.questionCount} Questions • {sess.uniqueDaysCount} Days Covered
                     </div>
                   </div>
@@ -180,34 +180,34 @@ export default function DashboardView({
 
         {/* Candidate Overview */}
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Award size={18} color="#34d399" /> Candidate Overview
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Award size={18} color="var(--accent-emerald)" /> Candidate Overview
           </h3>
 
-          <div style={{ fontSize: '0.8rem', color: '#a855f7', fontWeight: 600, letterSpacing: '0.04em', marginBottom: '0.6rem' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--accent-purple)', fontWeight: 600, letterSpacing: '0.04em', marginBottom: '0.6rem' }}>
             HIGHEST CURRICULUM COMPLETION
           </div>
           <div className="mini-candidates-list" style={{ marginBottom: '1.25rem' }}>
             {topCandidates.map(c => (
               <div key={c.member.id} className="mini-candidate-item" onClick={() => onSelectCandidate(c)}>
                 <div>
-                  <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.88rem' }}>{c.member.name}</div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.78rem' }}>{c.member.jobRole}</div>
+                  <div style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '0.88rem' }}>{c.member.name}</div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{c.member.jobRole}</div>
                 </div>
                 <span className="stat-pill">{c.signals?.missionsCompleted || 0} Missions</span>
               </div>
             ))}
           </div>
 
-          <div style={{ fontSize: '0.8rem', color: '#38bdf8', fontWeight: 600, letterSpacing: '0.04em', marginBottom: '0.6rem' }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)', fontWeight: 600, letterSpacing: '0.04em', marginBottom: '0.6rem' }}>
             AVAILABLE FOR INTERVIEW
           </div>
           <div className="mini-candidates-list">
             {availableCandidates.map(c => (
               <div key={c.member.id} className="mini-candidate-item" onClick={() => onSelectCandidate(c)}>
                 <div>
-                  <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.88rem' }}>{c.member.name}</div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.78rem' }}>{c.member.yearsExperience} yrs exp</div>
+                  <div style={{ color: 'var(--text-main)', fontWeight: 600, fontSize: '0.88rem' }}>{c.member.name}</div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>{c.member.yearsExperience} yrs exp</div>
                 </div>
                 <button className="btn btn-secondary" style={{ padding: '0.25rem 0.6rem', fontSize: '0.75rem' }}>
                   Select
@@ -220,8 +220,8 @@ export default function DashboardView({
 
       {/* Curriculum Coverage Distribution */}
       <div className="glass-card">
-        <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <BookOpen size={18} color="#38bdf8" /> Curriculum Days Testing Coverage
+        <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <BookOpen size={18} color="var(--accent-cyan)" /> Curriculum Days Testing Coverage
         </h3>
 
         <div className="curriculum-bars-grid">
@@ -230,14 +230,14 @@ export default function DashboardView({
             const percentage = Math.min(100, count * 25);
             return (
               <div key={d} className="curriculum-bar-item">
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#e2e8f0', marginBottom: '0.3rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: 'var(--text-main)', marginBottom: '0.3rem' }}>
                   <span>Day {d} Module</span>
-                  <span style={{ color: '#a5b4fc', fontWeight: 600 }}>{count} {count === 1 ? 'test' : 'tests'}</span>
+                  <span style={{ color: 'var(--primary)', fontWeight: 600 }}>{count} {count === 1 ? 'test' : 'tests'}</span>
                 </div>
                 <div className="progress-track">
                   <div 
                     className="progress-fill" 
-                    style={{ width: `${percentage > 0 ? percentage : 8}%`, background: percentage > 0 ? 'linear-gradient(90deg, #6366f1, #38bdf8)' : 'rgba(255,255,255,0.08)' }} 
+                    style={{ width: `${percentage > 0 ? percentage : 8}%`, background: percentage > 0 ? 'linear-gradient(90deg, var(--primary), var(--accent-cyan))' : 'rgba(200, 185, 165, 0.3)' }} 
                   />
                 </div>
               </div>

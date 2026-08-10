@@ -23,7 +23,7 @@ export default function CandidateDashboard({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <div className="hero-badge">
-              <Sparkles size={14} color="#38bdf8" /> Candidate Portal Dashboard
+              <Sparkles size={14} color="var(--accent-cyan)" /> Candidate Portal Dashboard
             </div>
             <h1 className="hero-heading" style={{ fontSize: '1.8rem', marginTop: '0.4rem' }}>
               Welcome, <span className="gradient-text">{member.name}</span>
@@ -87,16 +87,16 @@ export default function CandidateDashboard({
       {/* Latest Evaluation Report */}
       {latestSession && latestSession.feedback ? (
         <div className="glass-card" style={{ marginBottom: '1.75rem' }}>
-          <div className="feedback-section-title" style={{ color: '#818cf8', fontSize: '1.1rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div className="feedback-section-title" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Award size={20} /> Latest Interview Evaluation Report
           </div>
-          <p style={{ color: '#f1f5f9', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
+          <p style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.25rem' }}>
             {latestSession.feedback.summary}
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.25rem' }}>
             <div>
-              <h4 style={{ color: '#34d399', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <h4 style={{ color: 'var(--accent-emerald)', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                 <CheckCircle2 size={16} /> Verified Strengths
               </h4>
               <ul className="feedback-list strengths">
@@ -107,7 +107,7 @@ export default function CandidateDashboard({
             </div>
 
             <div>
-              <h4 style={{ color: '#fbbf24', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <h4 style={{ color: 'var(--accent-amber)', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                 <AlertTriangle size={16} /> Recommended Focus Areas
               </h4>
               <ul className="feedback-list gaps">
@@ -119,7 +119,7 @@ export default function CandidateDashboard({
           </div>
 
           <div>
-            <h4 style={{ color: '#38bdf8', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+            <h4 style={{ color: 'var(--accent-cyan)', fontSize: '0.88rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
               <ArrowRightCircle size={16} /> Recommended Next Steps
             </h4>
             <ul className="feedback-list next">
@@ -131,9 +131,9 @@ export default function CandidateDashboard({
         </div>
       ) : (
         <div className="glass-card empty-state-box" style={{ padding: '2.5rem', textAlign: 'center', marginBottom: '1.75rem' }}>
-          <MessageSquare size={36} color="#64748b" style={{ marginBottom: '0.85rem' }} />
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.4rem' }}>No Interviews Completed Yet</h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.88rem', marginBottom: '1rem' }}>
+          <MessageSquare size={36} color="var(--text-subtle)" style={{ marginBottom: '0.85rem' }} />
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.4rem' }}>No Interviews Completed Yet</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1rem' }}>
             Launch your technical evaluation session to receive adaptive AI questions and detailed performance feedback.
           </p>
           <button className="btn btn-primary" onClick={onStartInterview}>
@@ -145,7 +145,7 @@ export default function CandidateDashboard({
       {/* Previous Sessions History */}
       {mySessions.length > 0 && (
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem' }}>
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '1rem' }}>
             My Interview History ({mySessions.length})
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -158,11 +158,11 @@ export default function CandidateDashboard({
                       {sess.done ? 'COMPLETED' : 'IN PROGRESS'}
                     </span>
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.25rem' }}>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
                     {sess.questionCount} Questions Asked • {sess.uniqueDaysCount} Curriculum Days Covered
                   </div>
                 </div>
-                <span style={{ fontSize: '0.78rem', color: '#a5b4fc' }}>
+                <span style={{ fontSize: '0.78rem', color: 'var(--primary)' }}>
                   {new Date(sess.createdAt * 1000).toLocaleDateString()}
                 </span>
               </div>

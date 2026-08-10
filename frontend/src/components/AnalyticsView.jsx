@@ -80,8 +80,8 @@ function DonutChart({ strong, partial, weak, total }) {
       </svg>
 
       <div style={{ position: 'absolute', textAlign: 'center' }}>
-        <div style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{displayTotal}</div>
-        <div style={{ fontSize: '0.72rem', color: '#a5b4fc', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '0.2rem' }}>
+        <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1 }}>{displayTotal}</div>
+        <div style={{ fontSize: '0.72rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '0.2rem' }}>
           Evaluations
         </div>
       </div>
@@ -235,11 +235,11 @@ function RadarChart({ scores }) {
           const labelCoords = getCoordinates(i, 122);
           return (
             <g key={i}>
-              <circle cx={x} cy={y} r="4.5" fill="#38bdf8" stroke="#fff" strokeWidth="1.5" />
+              <circle cx={x} cy={y} r="4.5" fill="#1e7072" stroke="var(--bg-card)" strokeWidth="1.5" />
               <text
                 x={labelCoords.x}
                 y={labelCoords.y}
-                fill="#e2e8f0"
+                fill="var(--text-main)"
                 fontSize="9"
                 fontWeight="600"
                 textAnchor="middle"
@@ -306,11 +306,11 @@ function AreaTrendGraph({ sessions }) {
         {/* Data points */}
         {points.map((p, idx) => (
           <g key={idx}>
-            <circle cx={p.x} cy={p.y} r="5" fill="#38bdf8" stroke="#0f172a" strokeWidth="2" />
-            <text x={p.x} y={p.y - 10} fill="#e2e8f0" fontSize="10" fontWeight="700" textAnchor="middle">
+            <circle cx={p.x} cy={p.y} r="5" fill="#1e7072" stroke="var(--bg-card)" strokeWidth="2" />
+            <text x={p.x} y={p.y - 10} fill="var(--text-main)" fontSize="10" fontWeight="700" textAnchor="middle">
               {p.count} Qs
             </text>
-            <text x={p.x} y={height - 8} fill="#64748b" fontSize="10" textAnchor="middle">
+            <text x={p.x} y={height - 8} fill="var(--text-subtle)" fontSize="10" textAnchor="middle">
               {p.label}
             </text>
           </g>
@@ -417,17 +417,17 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
         </div>
 
         {/* Candidate Selector Dropdown */}
-        <div className="glass-card" style={{ padding: '0.6rem 1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
-          <User size={16} color="#818cf8" />
+        <div className="glass-card" style={{ padding: '0.6rem 1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', background: '#ffffff', borderRadius: '12px' }}>
+          <User size={16} color="var(--primary)" />
           <select 
             className="filter-select"
             value={selectedCandidateId}
             onChange={(e) => setSelectedCandidateId(e.target.value)}
-            style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '0.9rem', fontWeight: 600, outline: 'none', cursor: 'pointer' }}
+            style={{ background: 'transparent', border: 'none', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 600, outline: 'none', cursor: 'pointer' }}
           >
-            <option value="ALL" style={{ background: '#0f172a', color: '#fff' }}>🌐 All Candidates (Cohort Overview)</option>
+            <option value="ALL" style={{ background: '#ffffff', color: 'var(--text-main)' }}>🌐 All Candidates (Cohort Overview)</option>
             {candidates.map(c => (
-              <option key={c.member.id} value={c.member.id} style={{ background: '#0f172a', color: '#fff' }}>
+              <option key={c.member.id} value={c.member.id} style={{ background: '#ffffff', color: 'var(--text-main)' }}>
                 👤 {c.member.name} ({c.member.jobRole})
               </option>
             ))}
@@ -437,23 +437,23 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
 
       {/* Candidate Profile Card if Individual Selected */}
       {selectedCandidate && (
-        <div className="glass-card" style={{ marginBottom: '2rem', padding: '1.25rem 1.5rem', background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(56,189,248,0.08))', border: '1px solid rgba(129,140,248,0.3)' }}>
+        <div className="glass-card" style={{ marginBottom: '2rem', padding: '1.25rem 1.5rem', background: 'linear-gradient(135deg, #f7efe1, #f2e5d0)', border: '1px solid rgba(139,107,62,0.3)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div className="admin-avatar-circle" style={{ width: '48px', height: '48px', fontSize: '1.1rem', background: 'linear-gradient(135deg, #6366f1, #a855f7)' }}>
+              <div className="admin-avatar-circle" style={{ width: '48px', height: '48px', fontSize: '1.1rem', background: 'linear-gradient(135deg, #8b6b3e, #7e57c2)' }}>
                 {selectedCandidate.member?.name ? selectedCandidate.member.name.substring(0, 2).toUpperCase() : 'CA'}
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                  <h2 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 700 }}>{selectedCandidate.member?.name}</h2>
+                  <h2 style={{ fontSize: '1.3rem', color: 'var(--text-main)', fontWeight: 700 }}>{selectedCandidate.member?.name}</h2>
                   <span className="candidate-id-badge">{selectedCandidate.member?.id}</span>
                   {selectedCandidate.isRegisteredUser && (
-                    <span className="recommended-badge" style={{ background: 'rgba(168, 85, 247, 0.2)', border: '1px solid rgba(168, 85, 247, 0.4)', color: '#e9d5ff' }}>
+                    <span className="recommended-badge" style={{ background: 'rgba(126, 87, 194, 0.12)', border: '1px solid rgba(126, 87, 194, 0.3)', color: '#6a40a8' }}>
                       Registered User
                     </span>
                   )}
                 </div>
-                <div style={{ fontSize: '0.88rem', color: '#a5b4fc', marginTop: '0.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ fontSize: '0.88rem', color: 'var(--primary)', marginTop: '0.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                     <Briefcase size={14} /> {selectedCandidate.member?.jobRole} ({selectedCandidate.member?.yearsExperience} yrs exp)
                   </span>
@@ -466,16 +466,16 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
 
             <div style={{ display: 'flex', gap: '1.25rem' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#38bdf8' }}>{filteredSessions.length}</div>
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Interviews</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>{filteredSessions.length}</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Interviews</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#34d399' }}>{selectedCandidate.signals?.missionsCompleted || 0}</div>
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Missions</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--accent-emerald)' }}>{selectedCandidate.signals?.missionsCompleted || 0}</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Missions</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#c084fc' }}>{selectedCandidate.signals?.commitDays || 0}d</div>
-                <div style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Commit Days</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--accent-purple)' }}>{selectedCandidate.signals?.commitDays || 0}d</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Commit Days</div>
               </div>
             </div>
           </div>
@@ -530,10 +530,10 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
         
         {/* Visual Graph 1: Donut Chart */}
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <PieChart size={18} color="#c084fc" /> Answer Depth & Technical Precision
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <PieChart size={18} color="var(--accent-purple)" /> Answer Depth & Technical Precision
           </h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.82rem', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
             {selectedCandidate ? `Response evaluation breakdown for ${selectedCandidate.member?.name}.` : 'Distribution of candidate responses evaluated as strong, intermediate, or foundational.'}
           </p>
 
@@ -543,24 +543,24 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
             {/* Donut Legend */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#34d399', fontWeight: 600 }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#34d399' }} /> Strong Answers
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#278358', fontWeight: 600 }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#278358' }} /> Strong Answers
                 </span>
-                <span style={{ color: '#fff', fontWeight: 700 }}>{strongCount} ({strongPct}%)</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 700 }}>{strongCount} ({strongPct}%)</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#fbbf24', fontWeight: 600 }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#fbbf24' }} /> Intermediate
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#b45309', fontWeight: 600 }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#b45309' }} /> Intermediate
                 </span>
-                <span style={{ color: '#fff', fontWeight: 700 }}>{partialCount} ({partialPct}%)</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 700 }}>{partialCount} ({partialPct}%)</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#fca5a5', fontWeight: 600 }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444' }} /> Foundational
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#dc2626', fontWeight: 600 }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#dc2626' }} /> Foundational
                 </span>
-                <span style={{ color: '#fff', fontWeight: 700 }}>{weakCount} ({weakPct}%)</span>
+                <span style={{ color: 'var(--text-main)', fontWeight: 700 }}>{weakCount} ({weakPct}%)</span>
               </div>
             </div>
           </div>
@@ -568,10 +568,10 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
 
         {/* Visual Graph 2: Radar Competency Chart */}
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Compass size={18} color="#38bdf8" /> {selectedCandidate ? `${selectedCandidate.member?.name}'s Technical Radar` : 'Cohort Technical Competency Radar'}
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Compass size={18} color="var(--accent-cyan)" /> {selectedCandidate ? `${selectedCandidate.member?.name}'s Technical Radar` : 'Cohort Technical Competency Radar'}
           </h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.82rem', marginBottom: '0.75rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '0.75rem' }}>
             {selectedCandidate ? `Technical domain scores for ${selectedCandidate.member?.name} across curriculum modules.` : 'Overall evaluation scoring across 6 key curriculum domain competencies.'}
           </p>
 
@@ -583,10 +583,10 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
       <div className="glass-card" style={{ marginBottom: '2rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <h3 style={{ color: '#fff', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <BarChart3 size={18} color="#34d399" /> Curriculum Topic Testing Frequency
+            <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <BarChart3 size={18} color="var(--accent-emerald)" /> Curriculum Topic Testing Frequency
             </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.82rem', marginTop: '0.2rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginTop: '0.2rem' }}>
               {selectedCandidate ? `Modules tested during ${selectedCandidate.member?.name}'s interviews.` : 'Number of interview evaluations conducted per 31-day curriculum module.'}
             </p>
           </div>
@@ -598,22 +598,22 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
 
       {/* Individual AI Feedback Deep-Dive if Candidate Selected */}
       {selectedCandidate && latestSessionWithFeedback && (
-        <div className="glass-card" style={{ marginBottom: '2rem', borderColor: 'rgba(56,189,248,0.3)' }}>
-          <h3 style={{ color: '#fff', fontSize: '1.15rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sparkles size={18} color="#38bdf8" /> Latest Post-Interview AI Evaluation Feedback ({selectedCandidate.member?.name})
+        <div className="glass-card" style={{ marginBottom: '2rem', borderColor: 'rgba(30,112,114,0.3)' }}>
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.15rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={18} color="var(--accent-cyan)" /> Latest Post-Interview AI Evaluation Feedback ({selectedCandidate.member?.name})
           </h3>
           
-          <p style={{ color: '#e2e8f0', fontSize: '0.92rem', lineHeight: '1.5', background: 'rgba(255,255,255,0.03)', padding: '0.85rem 1rem', borderRadius: '8px', borderLeft: '3px solid #38bdf8', marginBottom: '1.25rem' }}>
+          <p style={{ color: 'var(--text-main)', fontSize: '0.92rem', lineHeight: '1.5', background: 'var(--bg-sidebar)', padding: '0.85rem 1rem', borderRadius: '8px', borderLeft: '3px solid var(--accent-cyan)', marginBottom: '1.25rem' }}>
             {latestSessionWithFeedback.feedback.summary}
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
             {/* Strengths */}
-            <div style={{ background: 'rgba(52,211,153,0.06)', border: '1px solid rgba(52,211,153,0.2)', padding: '1rem', borderRadius: '10px' }}>
-              <div style={{ color: '#34d399', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+            <div style={{ background: 'rgba(39,131,88,0.06)', border: '1px solid rgba(39,131,88,0.2)', padding: '1rem', borderRadius: '10px' }}>
+              <div style={{ color: '#278358', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <CheckCircle2 size={15} /> Observed Strengths
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#e2e8f0', fontSize: '0.82rem', lineHeight: '1.5' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--text-main)', fontSize: '0.82rem', lineHeight: '1.5' }}>
                 {latestSessionWithFeedback.feedback.strengths?.map((s, i) => (
                   <li key={i} style={{ marginBottom: '0.35rem' }}>{s}</li>
                 ))}
@@ -621,11 +621,11 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
             </div>
 
             {/* Gaps */}
-            <div style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.2)', padding: '1rem', borderRadius: '10px' }}>
-              <div style={{ color: '#fbbf24', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+            <div style={{ background: 'rgba(180,83,9,0.06)', border: '1px solid rgba(180,83,9,0.2)', padding: '1rem', borderRadius: '10px' }}>
+              <div style={{ color: '#b45309', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <AlertTriangle size={15} /> Areas for Growth
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#e2e8f0', fontSize: '0.82rem', lineHeight: '1.5' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--text-main)', fontSize: '0.82rem', lineHeight: '1.5' }}>
                 {latestSessionWithFeedback.feedback.gaps?.map((g, i) => (
                   <li key={i} style={{ marginBottom: '0.35rem' }}>{g}</li>
                 ))}
@@ -633,11 +633,11 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
             </div>
 
             {/* Next Steps */}
-            <div style={{ background: 'rgba(192,132,252,0.06)', border: '1px solid rgba(192,132,252,0.2)', padding: '1rem', borderRadius: '10px' }}>
-              <div style={{ color: '#c084fc', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+            <div style={{ background: 'rgba(126,87,194,0.06)', border: '1px solid rgba(126,87,194,0.2)', padding: '1rem', borderRadius: '10px' }}>
+              <div style={{ color: '#7e57c2', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <Target size={15} /> Recommended Next Steps
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#e2e8f0', fontSize: '0.82rem', lineHeight: '1.5' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--text-main)', fontSize: '0.82rem', lineHeight: '1.5' }}>
                 {latestSessionWithFeedback.feedback.next?.map((n, i) => (
                   <li key={i} style={{ marginBottom: '0.35rem' }}>{n}</li>
                 ))}
@@ -652,10 +652,10 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
         
         {/* Visual Graph 4: Session Depth Trend */}
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <TrendingUp size={18} color="#c084fc" /> Session Question Depth Trend
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <TrendingUp size={18} color="var(--accent-purple)" /> Session Question Depth Trend
           </h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.82rem', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
             {selectedCandidate ? `Question turn depth for ${selectedCandidate.member?.name}.` : 'Question turn depth per recorded interview session.'}
           </p>
 
@@ -664,10 +664,10 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
 
         {/* Cohort / Individual Progress Breakdown */}
         <div className="glass-card">
-          <h3 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Award size={18} color="#fbbf24" /> {selectedCandidate ? `${selectedCandidate.member?.name}'s Mission Progress` : 'Cohort Completion Leaderboard'}
+          <h3 style={{ color: 'var(--text-main)', fontSize: '1.1rem', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Award size={18} color="var(--accent-amber)" /> {selectedCandidate ? `${selectedCandidate.member?.name}'s Mission Progress` : 'Cohort Completion Leaderboard'}
           </h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.82rem', marginBottom: '1rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem' }}>
             {selectedCandidate ? 'Curriculum day missions completed.' : 'Mission progress signals across candidates.'}
           </p>
 
@@ -676,16 +676,16 @@ export default function AnalyticsView({ sessions, candidates, settings = { min_q
               const completedMissions = c.signals?.missionsCompleted || 0;
               const pct = Math.round((completedMissions / 31) * 100);
               const barColors = [
-                'linear-gradient(90deg, #6366f1, #38bdf8)',
-                'linear-gradient(90deg, #38bdf8, #34d399)',
-                'linear-gradient(90deg, #c084fc, #ec4899)',
-                'linear-gradient(90deg, #fbbf24, #f97316)'
+                'linear-gradient(90deg, #8b6b3e, #1e7072)',
+                'linear-gradient(90deg, #1e7072, #278358)',
+                'linear-gradient(90deg, #7e57c2, #b45309)',
+                'linear-gradient(90deg, #b45309, #8b6b3e)'
               ];
               return (
-                <div key={c.member?.id || i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '0.75rem 1rem', borderRadius: '10px' }}>
+                <div key={c.member?.id || i} style={{ background: 'var(--bg-sidebar)', border: '1px solid var(--border-color)', padding: '0.75rem 1rem', borderRadius: '10px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.35rem' }}>
-                    <span style={{ color: '#fff', fontWeight: 600 }}>{c.member?.name} ({c.member?.jobRole})</span>
-                    <span style={{ color: '#a5b4fc', fontWeight: 600 }}>{completedMissions} / 31 Days ({pct}%)</span>
+                    <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{c.member?.name} ({c.member?.jobRole})</span>
+                    <span style={{ color: 'var(--primary)', fontWeight: 600 }}>{completedMissions} / 31 Days ({pct}%)</span>
                   </div>
                   <div className="progress-track">
                     <div className="progress-fill" style={{ width: `${pct > 0 ? pct : 5}%`, background: barColors[i % barColors.length] }} />

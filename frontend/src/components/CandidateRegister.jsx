@@ -50,29 +50,29 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
       <div className="glass-card" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div className="logo-icon-glow" style={{ margin: '0 auto 0.85rem auto', width: '48px', height: '48px' }}>
-            <Bot size={28} color="#c084fc" />
+            <Bot size={28} color="#7e57c2" />
           </div>
           <h2 className="hero-heading" style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>
             Candidate <span className="gradient-text">Registration</span>
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '0.88rem' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
             Create your evaluation profile to take adaptive technical interviews.
           </p>
         </div>
 
         {error && (
-          <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', borderRadius: '10px', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+          <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#dc2626', borderRadius: '10px', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div>
-            <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+            <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
               Full Name *
             </label>
-            <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-              <User size={16} color="#94a3b8" />
+            <div className="search-input-wrapper">
+              <User size={16} color="var(--text-muted)" />
               <input 
                 type="text" 
                 name="full_name"
@@ -87,11 +87,11 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div>
-              <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+              <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
                 Email Address *
               </label>
-              <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <Mail size={16} color="#94a3b8" />
+              <div className="search-input-wrapper">
+                <Mail size={16} color="var(--text-muted)" />
                 <input 
                   type="email" 
                   name="email"
@@ -105,11 +105,11 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
             </div>
 
             <div>
-              <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+              <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
                 Password (min 6 chars) *
               </label>
-              <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <Key size={16} color="#94a3b8" />
+              <div className="search-input-wrapper">
+                <Key size={16} color="var(--text-muted)" />
                 <input 
                   type="password" 
                   name="password"
@@ -125,11 +125,11 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div>
-              <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+              <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
                 Target Job Role *
               </label>
-              <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-                <Briefcase size={16} color="#94a3b8" />
+              <div className="search-input-wrapper">
+                <Briefcase size={16} color="var(--text-muted)" />
                 <input 
                   type="text" 
                   name="job_role"
@@ -143,10 +143,10 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
             </div>
 
             <div>
-              <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+              <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
                 Years of Experience *
               </label>
-              <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <div className="search-input-wrapper">
                 <input 
                   type="number" 
                   name="years_experience"
@@ -163,11 +163,11 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
           </div>
 
           <div>
-            <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
+            <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
               Highest Education
             </label>
-            <div className="search-input-wrapper" style={{ background: 'rgba(255,255,255,0.05)' }}>
-              <GraduationCap size={16} color="#94a3b8" />
+            <div className="search-input-wrapper">
+              <GraduationCap size={16} color="var(--text-muted)" />
               <input 
                 type="text" 
                 name="education"
@@ -192,7 +192,7 @@ export default function CandidateRegister({ onRegisterSuccess, onSwitchToLogin }
         <div style={{ textAlign: 'center', marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)', fontSize: '0.85rem' }}>
           <button 
             onClick={onSwitchToLogin}
-            style={{ background: 'none', border: 'none', color: '#38bdf8', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontWeight: 500 }}
+            style={{ background: 'none', border: 'none', color: 'var(--accent-cyan)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontWeight: 500 }}
           >
             <LogIn size={14} /> Already have an account? Log In
           </button>

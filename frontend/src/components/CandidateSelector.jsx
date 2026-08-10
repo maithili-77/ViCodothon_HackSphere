@@ -240,7 +240,7 @@ export default function CandidateSelector({
         <div className="filter-controls-row">
           {/* Search Box */}
           <div className="search-input-wrapper">
-            <Search size={16} color="#94a3b8" />
+            <Search size={16} color="var(--text-muted)" />
             <input 
               type="text" 
               className="search-input" 
@@ -255,7 +255,7 @@ export default function CandidateSelector({
 
           {/* Role Filter */}
           <div className="select-wrapper">
-            <Filter size={14} color="#a5b4fc" />
+            <Filter size={14} color="var(--primary)" />
             <select className="filter-select" value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)}>
               <option value="ALL">All Roles ({candidates.length})</option>
               {distinctRoles.map(role => (
@@ -266,7 +266,7 @@ export default function CandidateSelector({
 
           {/* Experience Filter */}
           <div className="select-wrapper">
-            <Briefcase size={14} color="#38bdf8" />
+            <Briefcase size={14} color="var(--accent-cyan)" />
             <select className="filter-select" value={expFilter} onChange={(e) => setExpFilter(e.target.value)}>
               <option value="ALL">All Experience Levels</option>
               <option value="JUNIOR">Junior (&lt;4 yrs)</option>
@@ -277,7 +277,7 @@ export default function CandidateSelector({
 
           {/* Sort By */}
           <div className="select-wrapper">
-            <ArrowUpDown size={14} color="#34d399" />
+            <ArrowUpDown size={14} color="var(--accent-emerald)" />
             <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
               <option value="RECOMMENDED">Sort: Recommended</option>
               <option value="EXPERIENCE_DESC">Sort: Experience (High to Low)</option>
@@ -291,9 +291,9 @@ export default function CandidateSelector({
       {/* 3-Column Candidate Grid */}
       {filteredCandidates.length === 0 ? (
         <div className="glass-card empty-state-box" style={{ padding: '3rem', textAlign: 'center', marginBottom: '2.5rem' }}>
-          <User size={40} color="#64748b" style={{ marginBottom: '1rem' }} />
-          <h3 style={{ color: '#fff', marginBottom: '0.5rem' }}>No Candidates Found</h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>No candidate matched your search query or filter criteria.</p>
+          <User size={40} color="var(--text-subtle)" style={{ marginBottom: '1rem' }} />
+          <h3 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>No Candidates Found</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>No candidate matched your search query or filter criteria.</p>
           <button 
             className="btn btn-secondary" 
             style={{ marginTop: '1rem' }}
@@ -476,8 +476,8 @@ export default function CandidateSelector({
                   {getInitials(profileModalCandidate.member.name)}
                 </div>
                 <div>
-                  <h2 style={{ fontSize: '1.25rem', color: '#fff' }}>{profileModalCandidate.member.name}</h2>
-                  <p style={{ fontSize: '0.85rem', color: '#a5b4fc' }}>
+                  <h2 style={{ fontSize: '1.25rem', color: 'var(--text-main)' }}>{profileModalCandidate.member.name}</h2>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--primary)' }}>
                     {profileModalCandidate.member.jobRole} ({profileModalCandidate.member.yearsExperience} yrs exp)
                   </p>
                 </div>
@@ -494,13 +494,13 @@ export default function CandidateSelector({
                   <div key={idx} className="mission-item">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                       {m.passed ? (
-                        <CheckCircle2 size={16} color="#34d399" />
+                        <CheckCircle2 size={16} color="#278358" />
                       ) : m.skipped ? (
-                        <Clock size={16} color="#94a3b8" />
+                        <Clock size={16} color="var(--text-muted)" />
                       ) : (
-                        <AlertCircle size={16} color="#fbbf24" />
+                        <AlertCircle size={16} color="#b45309" />
                       )}
-                      <span style={{ fontSize: '0.9rem', color: '#f1f5f9', fontWeight: 500 }}>
+                      <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontWeight: 500 }}>
                         Day {m.day}: {m.title}
                       </span>
                     </div>
@@ -542,8 +542,8 @@ export default function CandidateSelector({
           <div className="modal-content glass-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '540px' }}>
             <div className="modal-header">
               <div>
-                <h2 style={{ fontSize: '1.25rem', color: '#fff' }}>Add New Candidate (Admin)</h2>
-                <p style={{ fontSize: '0.85rem', color: '#a5b4fc' }}>Register candidate credentials and technical evaluation profile.</p>
+                <h2 style={{ fontSize: '1.25rem', color: 'var(--text-main)' }}>Add New Candidate (Admin)</h2>
+                <p style={{ fontSize: '0.85rem', color: 'var(--primary)' }}>Register candidate credentials and technical evaluation profile.</p>
               </div>
               <button className="modal-close-btn" onClick={() => setShowAddModal(false)}>
                 <X size={20} />
@@ -551,14 +551,14 @@ export default function CandidateSelector({
             </div>
 
             {addError && (
-              <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', borderRadius: '10px', fontSize: '0.85rem', marginTop: '1rem' }}>
+              <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#dc2626', borderRadius: '10px', fontSize: '0.85rem', marginTop: '1rem' }}>
                 {addError}
               </div>
             )}
 
             <form onSubmit={handleAddSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
               <div>
-                <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Full Name *</label>
+                <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Full Name *</label>
                 <input 
                   type="text" 
                   className="chat-input" 
@@ -572,7 +572,7 @@ export default function CandidateSelector({
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Email Address *</label>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Email Address *</label>
                   <input 
                     type="email" 
                     className="chat-input" 
@@ -585,7 +585,7 @@ export default function CandidateSelector({
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Phone Number</label>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Phone Number</label>
                   <input 
                     type="tel" 
                     className="chat-input" 
@@ -599,7 +599,7 @@ export default function CandidateSelector({
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Position / Job Applied For *</label>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Position / Job Applied For *</label>
                   <input 
                     type="text" 
                     className="chat-input" 
@@ -612,7 +612,7 @@ export default function CandidateSelector({
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Years Experience *</label>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Years Experience *</label>
                   <input 
                     type="number" 
                     className="chat-input" 
@@ -628,7 +628,7 @@ export default function CandidateSelector({
               </div>
 
               <div>
-                <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Highest Education</label>
+                <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Highest Education</label>
                 <input 
                   type="text" 
                   className="chat-input" 
@@ -640,7 +640,7 @@ export default function CandidateSelector({
               </div>
 
               <div>
-                <label style={{ fontSize: '0.82rem', color: '#a5b4fc', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Technical Skills (comma-separated)</label>
+                <label style={{ fontSize: '0.82rem', color: 'var(--primary)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>Technical Skills (comma-separated)</label>
                 <input 
                   type="text" 
                   className="chat-input" 
@@ -670,7 +670,7 @@ export default function CandidateSelector({
           <div className="modal-content glass-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '460px', borderColor: 'rgba(239, 68, 68, 0.4)' }}>
             <div className="modal-header" style={{ borderBottomColor: 'rgba(239, 68, 68, 0.2)' }}>
               <div>
-                <h2 style={{ fontSize: '1.25rem', color: '#fca5a5' }}>Delete Candidate?</h2>
+                <h2 style={{ fontSize: '1.25rem', color: '#dc2626' }}>Delete Candidate?</h2>
               </div>
               <button className="modal-close-btn" onClick={() => setDeleteConfirmCandidate(null)}>
                 <X size={20} />
@@ -678,16 +678,16 @@ export default function CandidateSelector({
             </div>
 
             {deleteError && (
-              <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', borderRadius: '10px', fontSize: '0.85rem', marginTop: '1rem' }}>
+              <div style={{ padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#dc2626', borderRadius: '10px', fontSize: '0.85rem', marginTop: '1rem' }}>
                 {deleteError}
               </div>
             )}
 
             <div className="modal-body" style={{ padding: '1rem 0' }}>
-              <p style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                Are you sure you want to delete <strong style={{ color: '#fff' }}>{deleteConfirmCandidate.member?.name}</strong>?
+              <p style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                Are you sure you want to delete <strong style={{ color: 'var(--text-main)' }}>{deleteConfirmCandidate.member?.name}</strong>?
               </p>
-              <p style={{ color: '#94a3b8', fontSize: '0.85rem', marginTop: '0.4rem' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.4rem' }}>
                 This action cannot be undone.
               </p>
             </div>
